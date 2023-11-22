@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Data to excel</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<form autocomplete="off" method="post" name="gsheet">
+			<h3><center>CONTACT FORM</center></h3>
+			<input type="text" placeholder="Type your name" name="name">
+			<input type="email" placeholder="Type your email" name="email">
+			<input type="number" placeholder="Type your number" name="number">
+			<select name="degree">
+				<option value="Not Selected">Select your option</option>
+				<option value="BCA">BCA</option>
+				<option value="BSC IT">BSC IT</option>
+				<option value="B.TECH CS">B.TECH CS</option>
+				<option value="B.TECH CS and IT">B.TECH CS and IT </option>
+				<option value="BSC CS">BSC CS</option>
+			</select>
+			<textarea rows="4" placeholder="How we can help you??" name="msg"></textarea>
+			<label><b>GENDER</b></label>
+			<label><input type="radio" name="gender" id="male" value="male">&nbsp;&nbsp;Male</label>
+			<label><input type="radio" name="gender" id="female" value="female">&nbsp;&nbsp;Female</label>
+
+			<button type="submit" name="submit">SEND</button>
+			<button type="reset" class="reset">RESET</button>
+		</form>
+	</div>
+			<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzRDoZNmcatrXYfiq70ApKKxYMstFIPvNvXTn3RDMJiSkIILR7fd9xeuJsKJdhTQBV2/exec'
+            const form = document.forms['gsheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+        	  </script>
+
+
+</body>
+</html>
